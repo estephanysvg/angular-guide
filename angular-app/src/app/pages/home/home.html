@@ -1,40 +1,21 @@
-<main class="max-w-7xl mx-auto py-4 flex">
-  <ul class="rounded-sm w-fit p-1 px-2 flex flex-col gap-3" id="users">
-    <li class="bg-purple-200/20 hover:bg-purple-400 rounded-sm">
-      <app-user
-        (select)="onSelectUser($event)"
-        [id]="users[0].id"
-        [avatar]="users[0].avatar"
-        [name]="users[0].name"
-      ></app-user>
-    </li>
-    <li class="bg-purple-200/20 hover:bg-purple-400 rounded-sm">
-      <app-user
-        (select)="onSelectUser($event)"
-        [id]="users[1].id"
-        [avatar]="users[1].avatar"
-        [name]="users[1].name"
-      ></app-user>
-    </li>
-    <li class="bg-purple-200/20 hover:bg-purple-400 rounded-sm">
-      <app-user
-        (select)="onSelectUser($event)"
-        [id]="users[2].id"
-        [avatar]="users[2].avatar"
-        [name]="users[2].name"
-      ></app-user>
-    </li>
-    <li class="bg-purple-200/20 hover:bg-purple-400 rounded-sm">
-      <app-user
-        (select)="onSelectUser($event)"
-        [id]="users[3].id"
-        [avatar]="users[3].avatar"
-        [name]="users[3].name"
-      ></app-user>
-    </li>
+<main class="max-w-7xl mx-auto py-4 flex gap-6 px-4 lg:px-0">
+  <ul class="rounded-sm w-fit flex flex-col gap-3" id="users">
+    @for (user of users; track user.id) {
+      <li class="bg-purple-200/20 hover:bg-purple-400 rounded-sm">
+        <app-user
+          [selected]="selectedUser()?.id === user.id"
+          (select)="onSelectUser($event)"
+          [user]="user"
+        ></app-user>
+      </li>
+    }
   </ul>
 
-  <div class="text-amber-50">
-    <app-tasks [userSelected]="selectedUser()"></app-tasks>
-  </div>
+  @if (selectedUser()) {
+    <div class="text-amber-50 w-full">
+      <app-tasks [userSelected]="selectedUser()" id="user."></app-tasks>
+    </div>
+  } @else {
+    <div id="fallback" class="text-white">Select a user to see their tasks!</div>
+  }
 </main>

@@ -1,6 +1,6 @@
-<div class="text-amber-50">
+<div class="text-purple-100 rounded-sm {{ selected ? 'bg-purple-400' : '' }}">
   <button (click)="onSelectUser()" class="flex items-center gap-2 px-2 py-1 hover:cursor-pointer">
-    <img class="rounded-full size-8" [src]="imagePath()" [alt]="name" />
-    <span>{{ name }}</span>
+    <img class="rounded-full size-8" [src]="imagePath()" [alt]="user.name" />
+    <span>{{ user.name }}</span>
   </button>
 </div>

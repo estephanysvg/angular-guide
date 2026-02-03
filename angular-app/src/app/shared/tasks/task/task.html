@@ -1,0 +1,14 @@
+<article class="bg-purple-300 p-3 text-black flex flex-col">
+  <h2 class="font-bold">TASK {{ task.title }}</h2>
+
+  <time datetime="">{{ task.dueDate }}</time>
+  <p>{{ task.summary }}</p>
+  <p class="actions flex justify-end">
+    <button
+      class="bg-purple-900 hover:bg-purple-400 cursor-pointer text-white text-sm font-bold py-1 px-3 rounded"
+      (click)="onComplete(task.id)"
+    >
+      Complete
+    </button>
+  </p>
+</article>
